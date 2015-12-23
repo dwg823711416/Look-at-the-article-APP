@@ -1,0 +1,131 @@
+//
+//  oneBook.pch
+//  oneBook1.0
+//
+//  Created by qianfeng on 15/12/2.
+//  Copyright © 2015年 杜卫国. All rights reserved.
+//
+
+#ifndef oneBook_pch
+#define oneBook_pch
+#import <UIKit/UIKit.h>
+//屏幕尺寸定义
+#define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define SCREEN_SIZE   [UIScreen mainScreen].bounds.size
+#define SCREEN_RECT   [UIScreen mainScreen].bounds
+#import "NetDataEngine.h"
+#import "UIImageView+WebCache.h"
+#import "AFNetworking.h"
+#import "MMProgressHUD.h"
+#import "JHRefresh.h"
+#import "Help.h"
+#import <POP.h>
+#import <MagicalRecord/MagicalRecord.h>
+#define UM_APPKEY @"5658128467e58ea23e000968"
+#define URL_THIRD_HAPPY @"http://m2.qiushibaike.com/article/list/latest?page=%ld&count=30"
+//http://m2.qiushibaike.com/article/list/latest?page=1&count=30  //最新
+#define URL_THIRD_HOT @"http://m2.qiushibaike.com/article/list/text?page=%ld&count=30"
+//http://m2.qiushibaike.com/article/list/text?page=1&count=30   //热段子
+#define URL_THIRD_CLASSIS @"http://m2.qiushibaike.com/article/list/suggest?page=%ld&type=refresh&count=30"
+//http://m2.qiushibaike.com/article/list/suggest?page=1&type=refresh&count=30 //精华段子
+
+#define URL_THIRD_COMMENT @"http://m2.qiushibaike.com/article/%@/comments?page=%d&count=50"
+//http://m2.qiushibaike.com/article/%@/comments?page=%d&count=50 //评论接口
+
+//http://m2.qiushibaike.com/article/30157751/comments?page=1&count=50 //参数:%@评论事件的id
+#define URL_THIRD_COMMENTIMG @"http://pic.qiushibaike.com/system/avtnew/%@/%@/medium/%@"
+//http://pic.qiushibaike.com/system/avtnew/%@/%@/medium/%@ //人物头像接口
+//第一个参数: 用户 或 评论用户id  去后4位
+//第二个参数: 用户 或 评论用户id
+//第三个参数: 用户 或 评论用户icon
+//如http://pic.qiushibaike.com/system/avtnew/1334/13346084/medium/20140112000252.jpg
+#define URL_THIRD_IMAGE @"http://pic.qiushibaike.com/system/pictures/%@/%@/medium/%@"
+//http://m2.qiushibaike.com/article/list/imgrank?page=1&count=30  //搞图
+//http://pic.qiushibaike.com/system/pictures/%@/%@/medium/%@    //内容图片接口
+//第一个参数: 图片id去后4位 11420
+//第二个参数: 图片id  id：114200357
+//第三个参数: 图片icon "icon": "app114200357.jpg"
+//http://pic.qiushibaike.com/system/pictures/11421/114210239/medium/app114210239.jpg
+
+
+
+
+//风景图片
+#define URL_IMG @"http://service.picasso.adesk.com/v1/wallpaper/category/4e4d610cdf714d2966000002/wallpaper?order=hot&adult=false&first=1&skip=3&limit=4"
+
+//精彩每日
+#define URL_EVERY_DAY @"http://api2.pianke.me/read/latest"
+//POST http://api2.pianke.me/read/latest HTTP/1.1
+//Content-Type: application/x-www-form-urlencoded
+//sort=addtime&start=0&client=2&limit=10
+
+//早安故事
+#define URL_1 @"http://api2.pianke.me/read/columns_detail"
+//POST http://api2.pianke.me/read/columns_detail HTTP/1.1
+//Content-Type: application/x-www-form-urlencoded
+///sort=addtime&start=0&client=2&typeid=1&limit=10
+
+
+//晚间故事
+//POST http://api2.pianke.me/read/columns_detail HTTP/1.1
+//Content-Type: application/x-www-form-urlencoded
+//sort=addtime&start=0&client=2&typeid=27&limit=10
+
+//读书
+//POST http://api2.pianke.me/read/columns_detail HTTP/1.1
+//Content-Type: application/x-www-form-urlencoded
+//sort=addtime&start=0&client=2&typeid=10&limit=10
+
+//杂谈
+//POST http://api2.pianke.me/read/columns_detail HTTP/1.1
+//Content-Type: application/x-www-form-urlencoded
+//sort=addtime&start=0&client=2&typeid=14&limit=10
+
+//旅游
+//POST http://api2.pianke.me/read/columns_detail HTTP/1.1
+//Content-Type: application/x-www-form-urlencoded
+//sort=addtime&start=0&client=2&typeid=7&limit=10
+
+//人物
+//POST http://api2.pianke.me/read/columns_detail HTTP/1.1
+//Content-Type: application/x-www-form-urlencoded
+//sort=addtime&start=0&client=2&typeid=11&limit=10
+
+//影视
+//POST http://api2.pianke.me/read/columns_detail HTTP/1.1
+//Content-Type: application/x-www-form-urlencoded
+//sort=addtime&start=0&client=2&typeid=6&limit=10
+
+//命运
+//POST http://api2.pianke.me/read/columns_detail HTTP/1.1
+//Content-Type: application/x-www-form-urlencoded
+//sort=addtime&start=0&client=2&typeid=18&limit=10
+
+//话说
+//POST http://api2.pianke.me/read/columns_detail HTTP/1.1
+//Content-Type: application/x-www-form-urlencoded
+//sort=addtime&start=0&client=2&typeid=12&limit=10
+
+//具体文章
+#define URL_BOOK @"http://pianke.me/posts/%@?f=appshare"
+#define URL_WEBBOOK @"http://api2.pianke.me/article/info"
+//http://pianke.me/posts/56532f185e774331068b46b8?f=appshare
+//POST http://api2.pianke.me/article/info HTTP/1.1
+//Content-Length: 43
+//Content-Type: application/x-www-form-urlencoded
+//Host: api2.pianke.me
+//Connection: Keep-Alive
+//Cookie: PHPSESSID=c36aivudmns2skd04shvscf016
+//Cookie2: $Version=1
+//User-Agent: Paros/3.2.13
+//
+//contentid=56532f185e774331068b46b8&client=2
+
+
+
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* oneBook_pch */
